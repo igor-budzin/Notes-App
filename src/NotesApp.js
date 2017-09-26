@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import { createStore } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { addNewNoteAction } from './actions/addNewNoteAction';
 import NoteEditor from './NoteEditor';
 import NotesGrid from './NotesGrid';
 import './assets/css/style.scss';
@@ -11,7 +12,7 @@ class NotesApp extends Component {
     render() {
         return (
             <div className="notes-app">
-                <h2 className="app-header">NotesApp</h2>
+                <h2 className="app-header" onClick={this.props.addNewNote}>NotesApp</h2>
                 <input type="text" className="note-search" placeholder="Search notes or add new notes ..." />
                 <NoteEditor />
                 <NotesGrid />
@@ -22,7 +23,14 @@ class NotesApp extends Component {
 
 function mapStateToProps(state) {
     return {
-        users: state.users
+        userData: state.userReducer,
+        notesData: state.notesReducer
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addNewNote: bindActionCreators(addNewNoteAction, dispatch)
     }
 }
 
