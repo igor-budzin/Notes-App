@@ -5,6 +5,9 @@ import configureStore from './configureStore';
 import NotesApp from './NotesApp';
 
 const store = configureStore();
+store.subscribe(() => {
+    console.log("Fire");
+})
 window.store = store;
 
 

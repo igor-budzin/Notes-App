@@ -1,9 +1,9 @@
-export default function addNewNote() {
+export default function addNewNoteAction(text) {
 	return {
 		type: 'ADD_NOTE',
 		payload: {
-			id: 3,
-			text: 'Other note'
+			id: Date.now(),
+			text: text
 		}
 	}
 }
