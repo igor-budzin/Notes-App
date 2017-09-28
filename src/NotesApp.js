@@ -14,7 +14,7 @@ class NotesApp extends Component {
                 <h2 className="app-header" onClick={this.props.addNewNote}>NotesApp</h2>
                 <input type="text" ref="inp" className="note-search" placeholder="Search notes ..." />
                 <NoteEditor addNote={this.props.addNewNote} />
-                {/* <NotesGrid /> */}
+                <NotesGrid notes={this.props.notesData} />
             </div>
         )
     }
@@ -29,7 +29,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addNewNote: bindActionCreators(addNewNoteAction, dispatch)
+        addNewNote: bindActionCreators(addNewNoteAction, dispatch),
+        deleteNote: bindActionCreators(deleteNoteAction, dispatch)
     }
 }
 

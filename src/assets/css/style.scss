@@ -26,7 +26,7 @@ body {
 }
 
 .note {
-    width: 200px;
+    width: 220px;
     height: auto;
     float: left;
     background-color: yellow;
@@ -130,6 +130,7 @@ body {
 .notes-app {
     max-width: 960px;
     width: 100%;
+    margin: 0 auto;
 }
 
 .app-header {

@@ -3,7 +3,10 @@ import React,{Component} from 'react';
 export default class NoteEditor extends Component {
     onSubmitHandle(e) {
         e.preventDefault();
-        this.props.addNote(e.target.noteField.value);
+        if(e.target.noteField.value.length !== 0) {
+            this.props.addNote(e.target.noteField.value);
+            e.target.noteField.value = '';
+        }
     }
 
     render() {
