@@ -4,7 +4,7 @@ import Note from './Note'
 export default class NotesGrid extends Component {
     componentDidMount() {
         var elem = this.refs.grid;
-        this.msnry = new Masonry( elem, {
+        this.msnry = new Masonry(elem, {
             itemSelector: '.note',
             columnWidth: 220,
             gutter: 10
@@ -23,7 +23,7 @@ export default class NotesGrid extends Component {
             <div className="notes-grid" ref="grid">
                 {
                     this.props.notes.map((note) => {
-                        return <Note key={note.id}>{note.text}</Note>
+                        return <Note key={note.id} id={note.id} deleteNote={this.props.deleteNote}>{note.text}</Note>
                     })
                 }
             </div>

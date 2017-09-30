@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import addNewNoteAction from './actions/addNewNoteAction';
+import deleteNoteAction from './actions/deleteNoteAction';
+import searchNoteAction from './actions/searchNoteAction';
 import NoteEditor from './NoteEditor';
 import NotesGrid from './NotesGrid';
+import NoteSearch from './NoteSearch';
 import './assets/css/style.scss';
 
 
@@ -11,10 +14,10 @@ class NotesApp extends Component {
     render() {
         return (
             <div className="notes-app">
-                <h2 className="app-header" onClick={this.props.addNewNote}>NotesApp</h2>
-                <input type="text" ref="inp" className="note-search" placeholder="Search notes ..." />
+                <h2 className="app-header">NotesApp</h2>
+                <NoteSearch searchNote={this.props.searchNote} />                
                 <NoteEditor addNote={this.props.addNewNote} />
-                <NotesGrid notes={this.props.notesData} />
+                <NotesGrid notes={this.props.notesData} deleteNote={this.props.deleteNote} />
             </div>
         )
     }
@@ -22,15 +25,17 @@ class NotesApp extends Component {
 
 function mapStateToProps(state) {
     return {
-        userData: state.userReducer,
-        notesData: state.notesReducer
+        notesData: state.notesReducer.filter((note) => {
+            return note.text.toLowerCase().indexOf(state.searchReducer) !== -1;
+        })
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         addNewNote: bindActionCreators(addNewNoteAction, dispatch),
-        deleteNote: bindActionCreators(deleteNoteAction, dispatch)
+        deleteNote: bindActionCreators(deleteNoteAction, dispatch),
+        searchNote: bindActionCreators(searchNoteAction, dispatch)
     }
 }
 
