@@ -5,7 +5,7 @@ import pickColorAction from './actions/pickColorAction';
 import ColorElement from './ColorElement';
 
 class NoteEditor extends Component {
-    componentDidUpdate() {
+    updatePickedColor() {
         for(let i = 0; i < document.getElementsByClassName('color').length; i++) {
             if(document.getElementsByClassName('color')[i].classList.contains(this.props.pickedColor)) {
                 document.getElementsByClassName('color')[i].classList.add('active');
@@ -14,6 +14,14 @@ class NoteEditor extends Component {
                 document.getElementsByClassName('color')[i].classList.remove('active');   
             }
         }
+    }
+
+    componentDidUpdate() {
+        this.updatePickedColor();
+    }
+
+    componentDidMount() {
+        this.updatePickedColor();
     }
 
     onSubmitHandle(e) {
