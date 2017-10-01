@@ -7,7 +7,7 @@ export default class Note extends Component {
 
     render() {
         return (
-            <div className="note">
+            <div className={"note " + this.props.color}>
                 {this.props.children}
             	<span className="delete-note" onClick={this.onDeleteHandle.bind(this, this.props.id)}>x</span>
             </div>

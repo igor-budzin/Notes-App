@@ -1,11 +1,13 @@
 const initialState = [	
 	{
 		id: 1,
-		text: 'First item'
+		text: 'First item',
+		color: 'green'
 	},
 	{
 		id: 2,
-		text: 'Second item'
+		text: 'Second item',
+		color: 'blue'
 	}
 ];
 

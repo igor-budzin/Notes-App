@@ -1,9 +1,10 @@
-export default function addNewNoteAction(text) {
+export default function addNewNoteAction(text, color) {
 	return {
 		type: 'ADD_NOTE',
 		payload: {
 			id: Date.now(),
-			text: text
+			text: text,
+			color: color
 		}
 	}
 }

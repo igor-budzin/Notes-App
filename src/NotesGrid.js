@@ -23,7 +23,7 @@ export default class NotesGrid extends Component {
             <div className="notes-grid" ref="grid">
                 {
                     this.props.notes.map((note) => {
-                        return <Note key={note.id} id={note.id} deleteNote={this.props.deleteNote}>{note.text}</Note>
+                        return <Note key={note.id} id={note.id} color={note.color} deleteNote={this.props.deleteNote}>{note.text}</Note>
                     })
                 }
             </div>

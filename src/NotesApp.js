@@ -8,6 +8,7 @@ import NoteEditor from './NoteEditor';
 import NotesGrid from './NotesGrid';
 import NoteSearch from './NoteSearch';
 import './assets/css/style.scss';
+import './assets/img/accept.png';
 
 
 class NotesApp extends Component {
