@@ -6,7 +6,8 @@ const outputPath = path.resolve(__dirname, './dist');
 const webpackConfig = {
 	entry: {
 		app: [
-			path.resolve(__dirname, './src/index.js')
+			path.resolve(__dirname, './client/src/index.js'),
+			'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000'
 		]
 	},
 	output: {
@@ -32,22 +33,23 @@ const webpackConfig = {
 			{
 				test: /\.(gif|png|jpg|jpeg|svg)$/,
 				exclude: /node_modules/,
-				include: path.resolve(__dirname, './src/assets/img/'),
+				include: path.resolve(__dirname, './client/src/assets/img/'),
 				use: 'url-loader?limit=10000&name=assets/img/[name]-[hash].[ext]'
 			}
 		]
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.join(__dirname, './src/assets/index.html'),
+			template: path.join(__dirname, './client/src/assets/index.html'),
 			filename: 'index.html',
 			path: outputPath
 		}),
 		new webpack.NamedModulesPlugin(),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoEmitOnErrorsPlugin()
 	],
 	devServer: {
-		contentBase: path.resolve(__dirname, './dist'),
+		contentBase: path.resolve(__dirname, './client/dist'),
 		port: 8080,
 		historyApiFallback: true,
 		inline: true,
