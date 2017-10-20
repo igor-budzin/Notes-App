@@ -30,20 +30,22 @@ const Note = mongoose.model("Note");
 
 app.use(bodyParser.json());
 
-app.delete('/notes/:id', (req, res) => {
+app.post('/notes', (req, res) => {
 	const note = new Note({
-	    text: 'Second items',
-	    color: 'green'
+	    text: req.body.text,
+	    color: req.body.color,
+		id: req.body.id
 	});
 
 	note.save();
-    res.send(`Note with id: '' deleted`);
+	res.end();
 });
 
 
 app.get('/notes', (req, res) => {
 	Note.find({}, null, function(err, r) {
 		if(!err) {
+			console.log(r);
 			res.status(200).send(r);
 		}
 		else {
@@ -52,6 +54,7 @@ app.get('/notes', (req, res) => {
 	})
 });
 
-const server = app.listen(8080, function() {
+
+const server = app.listen(1616, function() {
     console.log(`Server is up and running`);
 });

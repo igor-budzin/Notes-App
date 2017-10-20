@@ -16,7 +16,7 @@ class NotesApp extends Component {
         return (
             <div className="notes-app">
                 <h2 className="app-header">NotesApp</h2>
-                <NoteSearch searchNote={this.props.searchNote} />                
+                <NoteSearch searchNote={this.props.searchNote} />
                 <NoteEditor addNote={this.props.addNewNote} />
                 <NotesGrid notes={this.props.notesData} deleteNote={this.props.deleteNote} />
             </div>
