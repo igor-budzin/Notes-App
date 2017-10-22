@@ -41,11 +41,14 @@ app.post('/notes', (req, res) => {
 	res.end();
 });
 
+app.delete('/notes', (req, res) => {
+	console.log(req.body);
+	Note.deleteOne({id: req.body.id}).catch((error) => {console.log(error)});
+});
 
 app.get('/notes', (req, res) => {
 	Note.find({}, null, function(err, r) {
 		if(!err) {
-			console.log(r);
 			res.status(200).send(r);
 		}
 		else {

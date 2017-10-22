@@ -22,7 +22,22 @@ export default function notesState(state = initialState, action) {
 			let newState = state.filter((note) => {
 				return noteId !== note.id;
 			});
+			axios({
+				method: 'delete',
+				url: '/notes',
+				data: {
+					id: noteId
+				}
+			})
+			// .then(() => {
+				
+			// })
+			// .cathc((error) => {
+			// 	console.log(error);
+			// 	return state;
+			// });
 			return newState;
+			
 		break;
 
 		default:

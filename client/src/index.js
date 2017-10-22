@@ -29,15 +29,3 @@ axios.get('/notes')
 .catch((error) => {
     console.log(error);
 });
-
-// axios.post('/notes', {
-//     text: "Other test task " + Date.now(),
-//     color: 'yellow'
-// })
-//
-// .then((response) => {
-//     console.log(response);
-// })
-// .catch((error) => {
-//     console.log(error);
-// });
