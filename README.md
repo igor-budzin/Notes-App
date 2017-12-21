@@ -8,7 +8,7 @@ Link for preview (only client side, without db and api): [link][1]
 :   Redux
 :   Axios
 
-**Front-end:** 
+**Back-end:** 
 :  Node.js (Express)
 :  Mongodb
 
